@@ -66,6 +66,7 @@ public class Solution13 {
     @Test
     public void test(){
         System.out.println(movingCount(3, 2, 17));
+        System.out.println("hello git1");
     }
 
 }
