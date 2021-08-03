@@ -2,6 +2,9 @@ package com.zc.exer;
 
 import org.junit.Test;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @ClassName Solution13
  * @Description 地上有一个m行n列的方格，从坐标 [0,0] 到坐标 [m-1,n-1] 。一个机器人从坐标 [0, 0] 的格子开始移动，
@@ -47,6 +50,31 @@ public class Solution13 {
     }
 
 
+    //方法二：广度优先搜索BFS
+    public int movingCount2(int m, int n, int k) {
+        boolean[][] visited = new boolean[m][n];
+        int res = 0;
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[] {0, 0});
+        int[] x;
+        int i,j,si,sj;
+        while (queue.size() > 0){
+            x = queue.poll();
+            i = x[0];
+            j = x[1];
+            si = getSum(i);
+            sj = getSum(j);
+            if (i >= m || j >= n || si + sj > k || visited[i][j]) continue;
+            res++;
+            visited[i][j] = true;
+            queue.add(new int[] {i + 1, j});
+            queue.add(new int[] {i, j + 1});
+        }
+        return  res;
+
+    }
+
+
     /**
     * @Author:ZengChao
     * @Description: 求数位之和
@@ -65,7 +93,7 @@ public class Solution13 {
 
     @Test
     public void test(){
-        System.out.println(movingCount(3, 2, 17));
+        System.out.println(movingCount2(3, 2, 17));
         System.out.println("hello git1");
     }
 
