@@ -1,4 +1,4 @@
-package com.zc.exer;
+package com.zc.primary_class;
 
 import org.junit.Test;
 
